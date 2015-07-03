@@ -64,7 +64,7 @@ module.exports = {
       // 'angular2': 'angular2/es6/dev',
 
       'app': 'src/app',
-      'common': 'src/common',
+      'common': 'src/common'
 
       // 'components': 'src/app/components'
       // 'services': '/app/services/*.js',
@@ -95,7 +95,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'angular2',
-      minChunks: Infinity,
+      minChunks: Infinity
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',

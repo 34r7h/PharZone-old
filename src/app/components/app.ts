@@ -8,9 +8,11 @@ import {BrowserLocation} from 'angular2/src/router/browser_location';
 // We use a folder if we want separate files
 import {Home} from './home/home';
 // Otherwise we only use one file for a component
-import {Dashboard} from './dashboard';
+import {Post} from './post';
+import {Deals} from './deals';
 // A simple example of a Component using a Service
 import {Todo} from './todo';
+
 
 // Import all of our custom app directives
 import {appDirectives} from '../directives/directives';
@@ -35,9 +37,11 @@ import {appDirectives} from '../directives/directives';
   <ul class="nav">
     <li><a router-link="home">Home</a></li>
     |
-    <li><a router-link="dashboard">Dashboard</a></li>
-    |
     <li><a router-link="todo">Todo</a></li>
+    |
+    <li><a router-link="post">Post</a></li>
+    |
+    <li><a router-link="deals">Deals</a></li>
   </ul>
 
 
@@ -46,15 +50,18 @@ import {appDirectives} from '../directives/directives';
   </main>
   `
 })
+
 @RouteConfig([
-  { path: '/',          as: 'home',      component: Home },
-  { path: '/dashboard', as: 'dashboard', component: Dashboard },
-  { path: '/todo',      as: 'todo',      component: Todo }
+  { path: '/', as: 'home', component: Home },
+  { path: '/deals', as: 'deals', component: Deals },
+  { path: '/post', as: 'post', component: Post },
+  { path: '/todo', as: 'todo', component: Todo }
 ])
+
 export class App {
   name: string;
   constructor(router: Router, browserLocation: BrowserLocation) {
-    this.name = 'Angular 2';
+    this.name = 'Phar Zone';
 
     // we need to manually go to the correct uri until the router is fixed
     let uri = browserLocation.path();
