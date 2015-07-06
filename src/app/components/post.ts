@@ -19,13 +19,6 @@ import {PostService} from '../services/PostService';
 @View({
 	directives: [coreDirectives, formDirectives, appDirectives],
 	template: `
-  <style>
-    .error-message {
-      color: red;
-
-    }
-  </style>
-
   <form [ng-form-model]="postForm" (submit)="postForm.valid && addPost($event, postForm.value.post, postForm.value.cost, postForm.value.drugForm, postForm.value.qty)"
   novalidate>
 
@@ -53,10 +46,14 @@ import {PostService} from '../services/PostService';
         <br>
         <i> {{post.qty + ' @ ' + post.drugForm}} </i>
         <button (click)="removePost($event, $index)">[Remove]</button>
+        <button (click)="updatePost($event, $index)">[Update]</button>
+        <button (click)="fb()">[Check FB]</button>
         <small>{{ post.created_at }}</small>
       </p>
     </li>
   </ul>
+  <h4>All posts</h4>
+  <code>{{ fbPosts }}</code>
   `
 })
 export class Post {
@@ -98,6 +95,13 @@ export class Post {
 	removePost(event, index) {
 		event.preventDefault(); // prevent native page refresh
 		this.postService.remove(index);
+	}
+	fb(){
+		this.postService.fb();
+	}
+	updatePost(event, index) {
+		event.preventDefault(); // prevent native page refresh
+		this.postService.update(index);
 	}
 
 }
